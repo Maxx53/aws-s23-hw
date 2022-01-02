@@ -1,0 +1,1272 @@
+PS D:\EPAM_WORK\DZ\aws\ready> terraform destroy -auto-approve
+random_string.wp_password: Refreshing state... [id=RSBVbFrBh0]
+random_string.mysql_password: Refreshing state... [id=ZCSV0uH5aP]
+aws_iam_user.ec2_admin: Refreshing state... [id=fedor]
+aws_efs_file_system.efs: Refreshing state... [id=fs-00a3ec341f88ca116]
+aws_iam_user.db_admin: Refreshing state... [id=semen]
+aws_iam_group.s23_group: Refreshing state... [id=s23_users]
+aws_vpc.aws_s23_vpc: Refreshing state... [id=vpc-07f6c8b48e0646592]
+aws_iam_role.ec2_role: Refreshing state... [id=ec2_role]
+aws_iam_role.rds_role: Refreshing state... [id=rds_role]
+aws_iam_user_login_profile.ec2_profile: Refreshing state... [id=fedor]
+aws_iam_policy.ec2_policy: Refreshing state... [id=arn:aws:iam::087693861308:policy/ec2_policy]
+aws_iam_policy.rds_policy: Refreshing state... [id=arn:aws:iam::087693861308:policy/rds_policy]
+aws_iam_user_login_profile.db_profile: Refreshing state... [id=semen]
+aws_iam_group_membership.s23_team: Refreshing state... [id=s23-team]
+aws_efs_access_point.efs_access_point: Refreshing state... [id=fsap-0a9fb739b372f4ac7]
+aws_iam_policy_attachment.ec2_rp-attach: Refreshing state... [id=ec2_rp-attach]
+aws_iam_policy_attachment.rds_rp-attach: Refreshing state... [id=rds_rp-attach]
+aws_internet_gateway.aws_s23-gw: Refreshing state... [id=igw-00ca9a6c14493bc22]
+aws_subnet.aws_s23_subnet_az[0]: Refreshing state... [id=subnet-07874373f41d4fcd4]
+aws_security_group.elb-sg: Refreshing state... [id=sg-03aa23b5e90265de0]
+aws_subnet.aws_s23_subnet_az[1]: Refreshing state... [id=subnet-084fb45d2ccdd5c6a]
+aws_route_table.aws_s23-rt: Refreshing state... [id=rtb-03cc7e8a0aaeaf954]
+aws_security_group.web-sg: Refreshing state... [id=sg-057e3d1886898a0c2]
+aws_db_subnet_group.rds-subnet: Refreshing state... [id=rds-subnet]
+aws_lb.web_alb: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-2:087693861308:loadbalancer/app/wp-alb/6a65010af386862c]
+aws_security_group.rds-sg: Refreshing state... [id=sg-07a616f9d4310f529]
+aws_security_group.efs-sg: Refreshing state... [id=sg-0b7acf614dcb1252e]
+aws_main_route_table_association.aws_s23-rt-association: Refreshing state... [id=rtbassoc-06a42e52249471be1]
+aws_efs_mount_target.efs_mount[0]: Refreshing state... [id=fsmt-02f92918cb572cf53]
+aws_efs_mount_target.efs_mount[1]: Refreshing state... [id=fsmt-01974f0b6b2c176d4]
+aws_db_instance.aws_s23-mysql: Refreshing state... [id=mysqldb]
+aws_lb_target_group.web_tg: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-2:087693861308:targetgroup/web-tg/76705ac37fb3e8ed]
+aws_launch_configuration.web_lc: Refreshing state... [id=LC-WP]
+aws_lb_listener.web_ls: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-2:087693861308:listener/app/wp-alb/6a65010af386862c/c140c2dd15151cd5]
+aws_autoscaling_group.web_asg: Refreshing state... [id=Wordpress-ASG]
+aws_autoscaling_attachment.asg_attachment_elb: Refreshing state... [id=Wordpress-ASG-20220102151103929500000001]
+
+Note: Objects have changed outside of Terraform
+
+Terraform detected the following changes made outside of Terraform since the last "terraform apply":
+
+  # aws_iam_policy_attachment.ec2_rp-attach has been changed
+  ~ resource "aws_iam_policy_attachment" "ec2_rp-attach" {
+      + groups     = []
+        id         = "ec2_rp-attach"
+        name       = "ec2_rp-attach"
+        # (3 unchanged attributes hidden)
+    }
+  # aws_iam_role.rds_role has been changed
+  ~ resource "aws_iam_role" "rds_role" {
+        id                    = "rds_role"
+      ~ managed_policy_arns   = [
+          + "arn:aws:iam::087693861308:policy/rds_policy",
+        ]
+        name                  = "rds_role"
+      + tags                  = {}
+        # (8 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+  # aws_launch_configuration.web_lc has been changed
+  ~ resource "aws_launch_configuration" "web_lc" {
+        id                               = "LC-WP"
+        name                             = "LC-WP"
+      + vpc_classic_link_security_groups = []
+        # (8 unchanged attributes hidden)
+    }
+  # aws_iam_policy.rds_policy has been changed
+  ~ resource "aws_iam_policy" "rds_policy" {
+        id        = "arn:aws:iam::087693861308:policy/rds_policy"
+        name      = "rds_policy"
+      + tags      = {}
+        # (5 unchanged attributes hidden)
+    }
+  # aws_iam_user.ec2_admin has been changed
+  ~ resource "aws_iam_user" "ec2_admin" {
+        id            = "fedor"
+        name          = "fedor"
+      + tags          = {}
+        # (5 unchanged attributes hidden)
+    }
+  # aws_efs_access_point.efs_access_point has been changed
+  ~ resource "aws_efs_access_point" "efs_access_point" {
+        id              = "fsap-0a9fb739b372f4ac7"
+      + tags            = {}
+        # (5 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+  # aws_efs_file_system.efs has been changed
+  ~ resource "aws_efs_file_system" "efs" {
+        id                              = "fs-00a3ec341f88ca116"
+      ~ number_of_mount_targets         = 0 -> 2
+        tags                            = {
+            "Name" = "EFS"
+        }
+        # (10 unchanged attributes hidden)
+    }
+  # aws_iam_policy_attachment.rds_rp-attach has been changed
+  ~ resource "aws_iam_policy_attachment" "rds_rp-attach" {
+      + groups     = []
+        id         = "rds_rp-attach"
+        name       = "rds_rp-attach"
+        # (3 unchanged attributes hidden)
+    }
+  # aws_internet_gateway.aws_s23-gw has been changed
+  ~ resource "aws_internet_gateway" "aws_s23-gw" {
+        id       = "igw-00ca9a6c14493bc22"
+      + tags     = {}
+        # (4 unchanged attributes hidden)
+    }
+  # aws_iam_user.db_admin has been changed
+  ~ resource "aws_iam_user" "db_admin" {
+        id            = "semen"
+        name          = "semen"
+      + tags          = {}
+        # (5 unchanged attributes hidden)
+    }
+  # aws_vpc.aws_s23_vpc has been changed
+  ~ resource "aws_vpc" "aws_s23_vpc" {
+      ~ default_route_table_id           = "rtb-032383fb34ab9fac4" -> "rtb-03cc7e8a0aaeaf954"
+        id                               = "vpc-07f6c8b48e0646592"
+      ~ main_route_table_id              = "rtb-032383fb34ab9fac4" -> "rtb-03cc7e8a0aaeaf954"
+        tags                             = {
+            "Name" = "aws_s23_vpc"
+        }
+        # (11 unchanged attributes hidden)
+    }
+  # aws_lb_listener.web_ls has been changed
+  ~ resource "aws_lb_listener" "web_ls" {
+        id                = "arn:aws:elasticloadbalancing:eu-west-2:087693861308:listener/app/wp-alb/6a65010af386862c/c140c2dd15151cd5"
+      + tags              = {}
+        # (5 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+  # aws_iam_policy.ec2_policy has been changed
+  ~ resource "aws_iam_policy" "ec2_policy" {
+        id        = "arn:aws:iam::087693861308:policy/ec2_policy"
+        name      = "ec2_policy"
+      + tags      = {}
+        # (5 unchanged attributes hidden)
+    }
+  # aws_autoscaling_group.web_asg has been changed
+  ~ resource "aws_autoscaling_group" "web_asg" {
+      + enabled_metrics           = []
+        id                        = "Wordpress-ASG"
+      + load_balancers            = []
+        name                      = "Wordpress-ASG"
+      + suspended_processes       = []
+      + termination_policies      = []
+        # (20 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+  # aws_db_instance.aws_s23-mysql has been changed
+  ~ resource "aws_db_instance" "aws_s23-mysql" {
+      + enabled_cloudwatch_logs_exports       = []
+        id                                    = "mysqldb"
+        name                                  = "wpdatabase"
+      + security_group_names                  = []
+        tags                                  = {
+            "Name" = "MySQL RDS Instance"
+        }
+        # (44 unchanged attributes hidden)
+    }
+  # aws_iam_role.ec2_role has been changed
+  ~ resource "aws_iam_role" "ec2_role" {
+        id                    = "ec2_role"
+      ~ managed_policy_arns   = [
+          + "arn:aws:iam::087693861308:policy/ec2_policy",
+        ]
+        name                  = "ec2_role"
+      + tags                  = {}
+        # (8 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+Unless you have made equivalent changes to your configuration, or ignored the relevant attributes using ignore_changes, the following plan may include actions to undo or respond to these changes.
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_autoscaling_attachment.asg_attachment_elb will be destroyed
+  - resource "aws_autoscaling_attachment" "asg_attachment_elb" {
+      - alb_target_group_arn   = "arn:aws:elasticloadbalancing:eu-west-2:087693861308:targetgroup/web-tg/76705ac37fb3e8ed" -> null
+      - autoscaling_group_name = "Wordpress-ASG" -> null
+      - id                     = "Wordpress-ASG-20220102151103929500000001" -> null
+    }
+
+  # aws_autoscaling_group.web_asg will be destroyed
+  - resource "aws_autoscaling_group" "web_asg" {
+      - arn                       = "arn:aws:autoscaling:eu-west-2:087693861308:autoScalingGroup:8f95f310-a25b-462b-a2db-d965756d3a23:autoScalingGroupName/Wordpress-ASG" -> null
+      - availability_zones        = [
+          - "eu-west-2a",
+          - "eu-west-2b",
+        ] -> null
+      - capacity_rebalance        = false -> null
+      - default_cooldown          = 300 -> null
+      - desired_capacity          = 2 -> null
+      - enabled_metrics           = [] -> null
+      - force_delete              = false -> null
+      - force_delete_warm_pool    = false -> null
+      - health_check_grace_period = 300 -> null
+      - health_check_type         = "ELB" -> null
+      - id                        = "Wordpress-ASG" -> null
+      - launch_configuration      = "LC-WP" -> null
+      - load_balancers            = [] -> null
+      - max_instance_lifetime     = 0 -> null
+      - max_size                  = 2 -> null
+      - metrics_granularity       = "1Minute" -> null
+      - min_elb_capacity          = 2 -> null
+      - min_size                  = 2 -> null
+      - name                      = "Wordpress-ASG" -> null
+      - protect_from_scale_in     = false -> null
+      - service_linked_role_arn   = "arn:aws:iam::087693861308:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling" -> null
+      - suspended_processes       = [] -> null
+      - target_group_arns         = [
+          - "arn:aws:elasticloadbalancing:eu-west-2:087693861308:targetgroup/web-tg/76705ac37fb3e8ed",
+        ] -> null
+      - termination_policies      = [] -> null
+      - vpc_zone_identifier       = [
+          - "subnet-07874373f41d4fcd4",
+          - "subnet-084fb45d2ccdd5c6a",
+        ] -> null
+      - wait_for_capacity_timeout = "15m" -> null
+
+      - tag {
+          - key                 = "Name" -> null
+          - propagate_at_launch = true -> null
+          - value               = "Wordpress-ASG" -> null
+        }
+    }
+
+  # aws_db_instance.aws_s23-mysql will be destroyed
+  - resource "aws_db_instance" "aws_s23-mysql" {
+      - address                               = "mysqldb.cescrqybicl5.eu-west-2.rds.amazonaws.com" -> null
+      - allocated_storage                     = 10 -> null
+      - arn                                   = "arn:aws:rds:eu-west-2:087693861308:db:mysqldb" -> null
+      - auto_minor_version_upgrade            = true -> null
+      - availability_zone                     = "eu-west-2b" -> null
+      - backup_retention_period               = 0 -> null
+      - backup_window                         = "03:20-03:50" -> null
+      - ca_cert_identifier                    = "rds-ca-2019" -> null
+      - copy_tags_to_snapshot                 = false -> null
+      - customer_owned_ip_enabled             = false -> null
+      - db_subnet_group_name                  = "rds-subnet" -> null
+      - delete_automated_backups              = true -> null
+      - deletion_protection                   = false -> null
+      - enabled_cloudwatch_logs_exports       = [] -> null
+      - endpoint                              = "mysqldb.cescrqybicl5.eu-west-2.rds.amazonaws.com:3306" -> null
+      - engine                                = "mysql" -> null
+      - engine_version                        = "8.0" -> null
+      - engine_version_actual                 = "8.0.23" -> null
+      - hosted_zone_id                        = "Z1TTGA775OQIYO" -> null
+      - iam_database_authentication_enabled   = false -> null
+      - id                                    = "mysqldb" -> null
+      - identifier                            = "mysqldb" -> null
+      - instance_class                        = "db.t2.micro" -> null
+      - iops                                  = 0 -> null
+      - latest_restorable_time                = "0001-01-01T00:00:00Z" -> null
+      - license_model                         = "general-public-license" -> null
+      - maintenance_window                    = "wed:05:10-wed:05:40" -> null
+      - max_allocated_storage                 = 0 -> null
+      - monitoring_interval                   = 0 -> null
+      - multi_az                              = false -> null
+      - name                                  = "wpdatabase" -> null
+      - option_group_name                     = "default:mysql-8-0" -> null
+      - parameter_group_name                  = "default.mysql8.0" -> null
+      - password                              = (sensitive value)
+      - performance_insights_enabled          = false -> null
+      - performance_insights_retention_period = 0 -> null
+      - port                                  = 3306 -> null
+      - publicly_accessible                   = false -> null
+      - replicas                              = [] -> null
+      - resource_id                           = "db-U3BIX65HUQJJAGIYTT54JCEEA4" -> null
+      - security_group_names                  = [] -> null
+      - skip_final_snapshot                   = true -> null
+      - status                                = "available" -> null
+      - storage_encrypted                     = false -> null
+      - storage_type                          = "gp2" -> null
+      - tags                                  = {
+          - "Name" = "MySQL RDS Instance"
+        } -> null
+      - tags_all                              = {
+          - "Name" = "MySQL RDS Instance"
+        } -> null
+      - username                              = "dbadmin" -> null
+      - vpc_security_group_ids                = [
+          - "sg-07a616f9d4310f529",
+        ] -> null
+    }
+
+  # aws_db_subnet_group.rds-subnet will be destroyed
+  - resource "aws_db_subnet_group" "rds-subnet" {
+      - arn         = "arn:aws:rds:eu-west-2:087693861308:subgrp:rds-subnet" -> null
+      - description = "Managed by Terraform" -> null
+      - id          = "rds-subnet" -> null
+      - name        = "rds-subnet" -> null
+      - subnet_ids  = [
+          - "subnet-07874373f41d4fcd4",
+          - "subnet-084fb45d2ccdd5c6a",
+        ] -> null
+      - tags        = {
+          - "Name" = "rds-subnet"
+        } -> null
+      - tags_all    = {
+          - "Name" = "rds-subnet"
+        } -> null
+    }
+
+  # aws_efs_access_point.efs_access_point will be destroyed
+  - resource "aws_efs_access_point" "efs_access_point" {
+      - arn             = "arn:aws:elasticfilesystem:eu-west-2:087693861308:access-point/fsap-0a9fb739b372f4ac7" -> null
+      - file_system_arn = "arn:aws:elasticfilesystem:eu-west-2:087693861308:file-system/fs-00a3ec341f88ca116" -> null
+      - file_system_id  = "fs-00a3ec341f88ca116" -> null
+      - id              = "fsap-0a9fb739b372f4ac7" -> null
+      - owner_id        = "087693861308" -> null
+      - tags            = {} -> null
+      - tags_all        = {} -> null
+
+      - root_directory {
+          - path = "/" -> null
+        }
+    }
+
+  # aws_efs_file_system.efs will be destroyed
+  - resource "aws_efs_file_system" "efs" {
+      - arn                             = "arn:aws:elasticfilesystem:eu-west-2:087693861308:file-system/fs-00a3ec341f88ca116" -> null
+      - creation_token                  = "aws23stream-efs-token" -> null
+      - dns_name                        = "fs-00a3ec341f88ca116.efs.eu-west-2.amazonaws.com" -> null
+      - encrypted                       = false -> null
+      - id                              = "fs-00a3ec341f88ca116" -> null
+      - number_of_mount_targets         = 2 -> null
+      - owner_id                        = "087693861308" -> null
+      - performance_mode                = "generalPurpose" -> null
+      - provisioned_throughput_in_mibps = 0 -> null
+      - size_in_bytes                   = [
+          - {
+              - value             = 6144
+              - value_in_ia       = 0
+              - value_in_standard = 6144
+            },
+        ] -> null
+      - tags                            = {
+          - "Name" = "EFS"
+        } -> null
+      - tags_all                        = {
+          - "Name" = "EFS"
+        } -> null
+      - throughput_mode                 = "bursting" -> null
+    }
+
+  # aws_efs_mount_target.efs_mount[0] will be destroyed
+  - resource "aws_efs_mount_target" "efs_mount" {
+      - availability_zone_id   = "euw2-az2" -> null
+      - availability_zone_name = "eu-west-2a" -> null
+      - dns_name               = "fs-00a3ec341f88ca116.efs.eu-west-2.amazonaws.com" -> null
+      - file_system_arn        = "arn:aws:elasticfilesystem:eu-west-2:087693861308:file-system/fs-00a3ec341f88ca116" -> null
+      - file_system_id         = "fs-00a3ec341f88ca116" -> null
+      - id                     = "fsmt-02f92918cb572cf53" -> null
+      - ip_address             = "10.0.1.166" -> null
+      - mount_target_dns_name  = "eu-west-2a.fs-00a3ec341f88ca116.efs.eu-west-2.amazonaws.com" -> null
+      - network_interface_id   = "eni-0b1b8d853c9cde6d9" -> null
+      - owner_id               = "087693861308" -> null
+      - security_groups        = [
+          - "sg-0b7acf614dcb1252e",
+        ] -> null
+      - subnet_id              = "subnet-07874373f41d4fcd4" -> null
+    }
+
+  # aws_efs_mount_target.efs_mount[1] will be destroyed
+  - resource "aws_efs_mount_target" "efs_mount" {
+      - availability_zone_id   = "euw2-az3" -> null
+      - availability_zone_name = "eu-west-2b" -> null
+      - dns_name               = "fs-00a3ec341f88ca116.efs.eu-west-2.amazonaws.com" -> null
+      - file_system_arn        = "arn:aws:elasticfilesystem:eu-west-2:087693861308:file-system/fs-00a3ec341f88ca116" -> null
+      - file_system_id         = "fs-00a3ec341f88ca116" -> null
+      - id                     = "fsmt-01974f0b6b2c176d4" -> null
+      - ip_address             = "10.0.2.42" -> null
+      - mount_target_dns_name  = "eu-west-2b.fs-00a3ec341f88ca116.efs.eu-west-2.amazonaws.com" -> null
+      - network_interface_id   = "eni-08f2245100e5de0f4" -> null
+      - owner_id               = "087693861308" -> null
+      - security_groups        = [
+          - "sg-0b7acf614dcb1252e",
+        ] -> null
+      - subnet_id              = "subnet-084fb45d2ccdd5c6a" -> null
+    }
+
+  # aws_iam_group.s23_group will be destroyed
+  - resource "aws_iam_group" "s23_group" {
+      - arn       = "arn:aws:iam::087693861308:group/s23_users" -> null
+      - id        = "s23_users" -> null
+      - name      = "s23_users" -> null
+      - path      = "/" -> null
+      - unique_id = "AGPARI2XWEG6DC65FVSUA" -> null
+    }
+
+  # aws_iam_group_membership.s23_team will be destroyed
+  - resource "aws_iam_group_membership" "s23_team" {
+      - group = "s23_users" -> null
+      - id    = "s23-team" -> null
+      - name  = "s23-team" -> null
+      - users = [
+          - "fedor",
+          - "semen",
+        ] -> null
+    }
+
+  # aws_iam_policy.ec2_policy will be destroyed
+  - resource "aws_iam_policy" "ec2_policy" {
+      - arn       = "arn:aws:iam::087693861308:policy/ec2_policy" -> null
+      - id        = "arn:aws:iam::087693861308:policy/ec2_policy" -> null
+      - name      = "ec2_policy" -> null
+      - path      = "/" -> null
+      - policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action   = "ec2:*"
+                      - Effect   = "Allow"
+                      - Resource = "*"
+                    },
+                  - {
+                      - Action   = "elasticloadbalancing:*"
+                      - Effect   = "Allow"
+                      - Resource = "*"
+                    },
+                  - {
+                      - Action   = "cloudwatch:*"
+                      - Effect   = "Allow"
+                      - Resource = "*"
+                    },
+                  - {
+                      - Action   = "autoscaling:*"
+                      - Effect   = "Allow"
+                      - Resource = "*"
+                    },
+                  - {
+                      - Action    = "iam:CreateServiceLinkedRole"
+                      - Condition = {
+                          - StringEquals = {
+                              - iam:AWSServiceName = [
+                                  - "autoscaling.amazonaws.com",
+                                  - "ec2scheduled.amazonaws.com",
+                                  - "elasticloadbalancing.amazonaws.com",
+                                  - "spot.amazonaws.com",
+                                  - "spotfleet.amazonaws.com",
+                                  - "transitgateway.amazonaws.com",
+                                ]
+                            }
+                        }
+                      - Effect    = "Allow"
+                      - Resource  = "*"
+                    },
+                  - {
+                      - Action   = "iam:GetAccountPasswordPolicy"
+                      - Effect   = "Allow"
+                      - Resource = "*"
+                    },
+                  - {
+                      - Action   = "iam:ChangePassword"
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:iam::087693861308:user/fedor"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - policy_id = "ANPARI2XWEG6D4RK75KPA" -> null
+      - tags      = {} -> null
+      - tags_all  = {} -> null
+    }
+
+  # aws_iam_policy.rds_policy will be destroyed
+  - resource "aws_iam_policy" "rds_policy" {
+      - arn       = "arn:aws:iam::087693861308:policy/rds_policy" -> null
+      - id        = "arn:aws:iam::087693861308:policy/rds_policy" -> null
+      - name      = "rds_policy" -> null
+      - path      = "/" -> null
+      - policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action   = [
+                          - "rds:*",
+                        ]
+                      - Effect   = "Allow"
+                      - Resource = [
+                          - "arn:aws:rds:eu-west-2:087693861308:db:*",
+                        ]
+                    },
+                  - {
+                      - Action   = "pi:*"
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:pi:*:*:metrics/rds/*"
+                    },
+                  - {
+                      - Action    = "iam:CreateServiceLinkedRole"
+                      - Condition = {
+                          - StringLike = {
+                              - iam:AWSServiceName = [
+                                  - "rds.amazonaws.com",
+                                  - "rds.application-autoscaling.amazonaws.com",
+                                ]
+                            }
+                        }
+                      - Effect    = "Allow"
+                      - Resource  = "*"
+                    },
+                  - {
+                      - Action   = "iam:GetAccountPasswordPolicy"
+                      - Effect   = "Allow"
+                      - Resource = "*"
+                    },
+                  - {
+                      - Action   = "iam:ChangePassword"
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:iam::087693861308:user/semen"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - policy_id = "ANPARI2XWEG6JQDBLKQJP" -> null
+      - tags      = {} -> null
+      - tags_all  = {} -> null
+    }
+
+  # aws_iam_policy_attachment.ec2_rp-attach will be destroyed
+  - resource "aws_iam_policy_attachment" "ec2_rp-attach" {
+      - groups     = [] -> null
+      - id         = "ec2_rp-attach" -> null
+      - name       = "ec2_rp-attach" -> null
+      - policy_arn = "arn:aws:iam::087693861308:policy/ec2_policy" -> null
+      - roles      = [
+          - "ec2_role",
+        ] -> null
+      - users      = [
+          - "fedor",
+        ] -> null
+    }
+
+  # aws_iam_policy_attachment.rds_rp-attach will be destroyed
+  - resource "aws_iam_policy_attachment" "rds_rp-attach" {
+      - groups     = [] -> null
+      - id         = "rds_rp-attach" -> null
+      - name       = "rds_rp-attach" -> null
+      - policy_arn = "arn:aws:iam::087693861308:policy/rds_policy" -> null
+      - roles      = [
+          - "rds_role",
+        ] -> null
+      - users      = [
+          - "semen",
+        ] -> null
+    }
+
+  # aws_iam_role.ec2_role will be destroyed
+  - resource "aws_iam_role" "ec2_role" {
+      - arn                   = "arn:aws:iam::087693861308:role/ec2_role" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sts:AssumeRole"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "ec2.amazonaws.com"
+                        }
+                      - Sid       = ""
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2022-01-02T15:01:13Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "ec2_role" -> null
+      - managed_policy_arns   = [
+          - "arn:aws:iam::087693861308:policy/ec2_policy",
+        ] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "ec2_role" -> null
+      - path                  = "/" -> null
+      - tags                  = {} -> null
+      - tags_all              = {} -> null
+      - unique_id             = "AROARI2XWEG6PBA55GEUE" -> null
+
+      - inline_policy {}
+    }
+
+  # aws_iam_role.rds_role will be destroyed
+  - resource "aws_iam_role" "rds_role" {
+      - arn                   = "arn:aws:iam::087693861308:role/rds_role" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sts:AssumeRole"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "rds.amazonaws.com"
+                        }
+                      - Sid       = ""
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2022-01-02T15:01:13Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "rds_role" -> null
+      - managed_policy_arns   = [
+          - "arn:aws:iam::087693861308:policy/rds_policy",
+        ] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "rds_role" -> null
+      - path                  = "/" -> null
+      - tags                  = {} -> null
+      - tags_all              = {} -> null
+      - unique_id             = "AROARI2XWEG6OFL5IK2ZC" -> null
+
+      - inline_policy {}
+    }
+
+  # aws_iam_user.db_admin will be destroyed
+  - resource "aws_iam_user" "db_admin" {
+      - arn           = "arn:aws:iam::087693861308:user/semen" -> null
+      - force_destroy = false -> null
+      - id            = "semen" -> null
+      - name          = "semen" -> null
+      - path          = "/" -> null
+      - tags          = {} -> null
+      - tags_all      = {} -> null
+      - unique_id     = "AIDARI2XWEG6PXTTSNH5C" -> null
+    }
+
+  # aws_iam_user.ec2_admin will be destroyed
+  - resource "aws_iam_user" "ec2_admin" {
+      - arn           = "arn:aws:iam::087693861308:user/fedor" -> null
+      - force_destroy = false -> null
+      - id            = "fedor" -> null
+      - name          = "fedor" -> null
+      - path          = "/" -> null
+      - tags          = {} -> null
+      - tags_all      = {} -> null
+      - unique_id     = "AIDARI2XWEG6EPROUGY4P" -> null
+    }
+
+  # aws_iam_user_login_profile.db_profile will be destroyed
+  - resource "aws_iam_user_login_profile" "db_profile" {
+      - encrypted_password      = "wcBMA/+acaZr61BLAQgAda0VASpXP1gSBnHdTjuuL4jGUDPf7CgI/NjuWIHz+dXZw7r4kfK7/A1138yg3sq9xKkrcGl3ErA2qQgD2WF16shyamyGwVx6/EA6vtaLSTH/6jTb05jhnb8HBcHQWveNP2W954NcTZhULjtifmpR/yY5GG8QepYTS0IsnQ3Yl3AwlxZxSxkhfPGqh6nEwSfPAnqremWj0/s5xc8TLQhjXgmKf2lZhhgW+ZuMyvRPaG26bCqdJHprULrYchCcjcYRc+fZPI72UO2UDDjm3uGY9jgKxtGKV3/xfSJchSDj0U3EGe4o47x+cHbHuulrgPyrbEIm9uBu/7N1sKuc0CyIPNLgAeRG8w6QlwXNgs29q6Ww1cVG4V3t4MXgEuEkteAq4vxngxDgSeTyq+x3hAz8eMRalWkLLy4I4C/il/tjMOBN5OH4T2BxTUegPC+go1pmtVjid9Aew+F6+wA=" -> null
+      - id                      = "semen" -> null
+      - key_fingerprint         = "7778ac2a25b25299cc65a56afe5e4dd9c684da7d" -> null
+      - password_length         = 20 -> null
+      - password_reset_required = true -> null
+      - pgp_key                 = "keybase:maxxv" -> null
+      - user                    = "semen" -> null
+    }
+
+  # aws_iam_user_login_profile.ec2_profile will be destroyed
+  - resource "aws_iam_user_login_profile" "ec2_profile" {
+      - encrypted_password      = "wcBMA/+acaZr61BLAQgAr3xRPDvCKNJV8vMJAUlP3hfR2n7Dh/34S91TPL+Yv5jwx7MMKAoOYhMu3TDPnJyDn3snzdyV+A0WYqPNZvM0k6LYS6chm4K9MxynIeLk4ktiQcVdsvHKiDTco+PaU0dWkkH+21tpdg2dVjmVmWhlKTWpZRNmLMIOvV02wFBJi8lepdFgd49AK+1hVbOfLi2flMXY7ffh5kTpTkffyJ4iVrUN9NkXoTZT+o7cqpnbYDceGZh5mg0cjj++lOexCSqLo3nWuD9Atks4HNQA/CvyNYLPBkdeihNfgjrj9Jutfav8zUdupmbZ3nVOIABYnjqZg2vwdk2JxHkYsoR2eFH+9dLgAeQLuql+DCfo9IObE1dbb5MX4dzk4OTgnOGbCOBm4ouFudPgUOS7f49l059lmc4toyWlhEsu4H3i0lDmPuAu5BL+6hbsHyzgDbG7Qlo6DeniXXYSx+EM9gA=" -> null
+      - id                      = "fedor" -> null
+      - key_fingerprint         = "7778ac2a25b25299cc65a56afe5e4dd9c684da7d" -> null
+      - password_length         = 20 -> null
+      - password_reset_required = true -> null
+      - pgp_key                 = "keybase:maxxv" -> null
+      - user                    = "fedor" -> null
+    }
+
+  # aws_internet_gateway.aws_s23-gw will be destroyed
+  - resource "aws_internet_gateway" "aws_s23-gw" {
+      - arn      = "arn:aws:ec2:eu-west-2:087693861308:internet-gateway/igw-00ca9a6c14493bc22" -> null
+      - id       = "igw-00ca9a6c14493bc22" -> null
+      - owner_id = "087693861308" -> null
+      - tags     = {} -> null
+      - tags_all = {} -> null
+      - vpc_id   = "vpc-07f6c8b48e0646592" -> null
+    }
+
+  # aws_launch_configuration.web_lc will be destroyed
+  - resource "aws_launch_configuration" "web_lc" {
+      - arn                              = "arn:aws:autoscaling:eu-west-2:087693861308:launchConfiguration:ffb0836b-15a9-48f3-b6c2-c5a2fbf73515:launchConfigurationName/LC-WP" -> null
+      - associate_public_ip_address      = false -> null
+      - ebs_optimized                    = false -> null
+      - enable_monitoring                = true -> null
+      - id                               = "LC-WP" -> null
+      - image_id                         = "ami-029ed17b4ea379178" -> null
+      - instance_type                    = "t2.micro" -> null
+      - name                             = "LC-WP" -> null
+      - security_groups                  = [
+          - "sg-057e3d1886898a0c2",
+        ] -> null
+      - user_data                        = "62e1273f613df002c9dd30365a20e25183b260e5" -> null
+      - vpc_classic_link_security_groups = [] -> null
+    }
+
+  # aws_lb.web_alb will be destroyed
+  - resource "aws_lb" "web_alb" {
+      - arn                        = "arn:aws:elasticloadbalancing:eu-west-2:087693861308:loadbalancer/app/wp-alb/6a65010af386862c" -> null
+      - arn_suffix                 = "app/wp-alb/6a65010af386862c" -> null
+      - desync_mitigation_mode     = "defensive" -> null
+      - dns_name                   = "wp-alb-630828199.eu-west-2.elb.amazonaws.com" -> null
+      - drop_invalid_header_fields = false -> null
+      - enable_deletion_protection = false -> null
+      - enable_http2               = true -> null
+      - enable_waf_fail_open       = false -> null
+      - id                         = "arn:aws:elasticloadbalancing:eu-west-2:087693861308:loadbalancer/app/wp-alb/6a65010af386862c" -> null
+      - idle_timeout               = 60 -> null
+      - internal                   = false -> null
+      - ip_address_type            = "ipv4" -> null
+      - load_balancer_type         = "application" -> null
+      - name                       = "wp-alb" -> null
+      - security_groups            = [
+          - "sg-03aa23b5e90265de0",
+        ] -> null
+      - subnets                    = [
+          - "subnet-07874373f41d4fcd4",
+          - "subnet-084fb45d2ccdd5c6a",
+        ] -> null
+      - tags                       = {
+          - "Name" = "Wordpress-ALB"
+        } -> null
+      - tags_all                   = {
+          - "Name" = "Wordpress-ALB"
+        } -> null
+      - vpc_id                     = "vpc-07f6c8b48e0646592" -> null
+      - zone_id                    = "ZHURV8PSTC4K8" -> null
+
+      - access_logs {
+          - enabled = false -> null
+        }
+
+      - subnet_mapping {
+          - subnet_id = "subnet-07874373f41d4fcd4" -> null
+        }
+      - subnet_mapping {
+          - subnet_id = "subnet-084fb45d2ccdd5c6a" -> null
+        }
+    }
+
+  # aws_lb_listener.web_ls will be destroyed
+  - resource "aws_lb_listener" "web_ls" {
+      - arn               = "arn:aws:elasticloadbalancing:eu-west-2:087693861308:listener/app/wp-alb/6a65010af386862c/c140c2dd15151cd5" -> null
+      - id                = "arn:aws:elasticloadbalancing:eu-west-2:087693861308:listener/app/wp-alb/6a65010af386862c/c140c2dd15151cd5" -> null
+      - load_balancer_arn = "arn:aws:elasticloadbalancing:eu-west-2:087693861308:loadbalancer/app/wp-alb/6a65010af386862c" -> null
+      - port              = 80 -> null
+      - protocol          = "HTTP" -> null
+      - tags              = {} -> null
+      - tags_all          = {} -> null
+
+      - default_action {
+          - order            = 1 -> null
+          - target_group_arn = "arn:aws:elasticloadbalancing:eu-west-2:087693861308:targetgroup/web-tg/76705ac37fb3e8ed" -> null
+          - type             = "forward" -> null
+        }
+    }
+
+  # aws_lb_target_group.web_tg will be destroyed
+  - resource "aws_lb_target_group" "web_tg" {
+      - arn                                = "arn:aws:elasticloadbalancing:eu-west-2:087693861308:targetgroup/web-tg/76705ac37fb3e8ed" -> null
+      - arn_suffix                         = "targetgroup/web-tg/76705ac37fb3e8ed" -> null
+      - connection_termination             = false -> null
+      - deregistration_delay               = "300" -> null
+      - id                                 = "arn:aws:elasticloadbalancing:eu-west-2:087693861308:targetgroup/web-tg/76705ac37fb3e8ed" -> null
+      - lambda_multi_value_headers_enabled = false -> null
+      - load_balancing_algorithm_type      = "round_robin" -> null
+      - name                               = "web-tg" -> null
+      - port                               = 80 -> null
+      - protocol                           = "HTTP" -> null
+      - protocol_version                   = "HTTP1" -> null
+      - proxy_protocol_v2                  = false -> null
+      - slow_start                         = 0 -> null
+      - tags                               = {
+          - "Name" = "Wordpress-TG"
+        } -> null
+      - tags_all                           = {
+          - "Name" = "Wordpress-TG"
+        } -> null
+      - target_type                        = "instance" -> null
+      - vpc_id                             = "vpc-07f6c8b48e0646592" -> null
+
+      - health_check {
+          - enabled             = true -> null
+          - healthy_threshold   = 2 -> null
+          - interval            = 120 -> null
+          - matcher             = "200,301,302" -> null
+          - path                = "/health" -> null
+          - port                = "traffic-port" -> null
+          - protocol            = "HTTP" -> null
+          - timeout             = 30 -> null
+          - unhealthy_threshold = 6 -> null
+        }
+
+      - stickiness {
+          - cookie_duration = 86400 -> null
+          - enabled         = false -> null
+          - type            = "lb_cookie" -> null
+        }
+    }
+
+  # aws_main_route_table_association.aws_s23-rt-association will be destroyed
+  - resource "aws_main_route_table_association" "aws_s23-rt-association" {
+      - id                      = "rtbassoc-06a42e52249471be1" -> null
+      - original_route_table_id = "rtb-032383fb34ab9fac4" -> null
+      - route_table_id          = "rtb-03cc7e8a0aaeaf954" -> null
+      - vpc_id                  = "vpc-07f6c8b48e0646592" -> null
+    }
+
+  # aws_route_table.aws_s23-rt will be destroyed
+  - resource "aws_route_table" "aws_s23-rt" {
+      - arn              = "arn:aws:ec2:eu-west-2:087693861308:route-table/rtb-03cc7e8a0aaeaf954" -> null
+      - id               = "rtb-03cc7e8a0aaeaf954" -> null
+      - owner_id         = "087693861308" -> null
+      - propagating_vgws = [] -> null
+      - route            = [
+          - {
+              - carrier_gateway_id         = ""
+              - cidr_block                 = "0.0.0.0/0"
+              - destination_prefix_list_id = ""
+              - egress_only_gateway_id     = ""
+              - gateway_id                 = "igw-00ca9a6c14493bc22"
+              - instance_id                = ""
+              - ipv6_cidr_block            = ""
+              - local_gateway_id           = ""
+              - nat_gateway_id             = ""
+              - network_interface_id       = ""
+              - transit_gateway_id         = ""
+              - vpc_endpoint_id            = ""
+              - vpc_peering_connection_id  = ""
+            },
+        ] -> null
+      - tags             = {
+          - "Name" = "aws_s23-rt"
+        } -> null
+      - tags_all         = {
+          - "Name" = "aws_s23-rt"
+        } -> null
+      - vpc_id           = "vpc-07f6c8b48e0646592" -> null
+    }
+
+  # aws_security_group.efs-sg will be destroyed
+  - resource "aws_security_group" "efs-sg" {
+      - arn                    = "arn:aws:ec2:eu-west-2:087693861308:security-group/sg-0b7acf614dcb1252e" -> null
+      - description            = "Managed by Terraform" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = ""
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-0b7acf614dcb1252e" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = []
+              - description      = ""
+              - from_port        = 2049
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = [
+                  - "sg-057e3d1886898a0c2",
+                ]
+              - self             = false
+              - to_port          = 2049
+            },
+        ] -> null
+      - name                   = "EFS-SG" -> null
+      - owner_id               = "087693861308" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Name" = "EFS-SG"
+        } -> null
+      - tags_all               = {
+          - "Name" = "EFS-SG"
+        } -> null
+      - vpc_id                 = "vpc-07f6c8b48e0646592" -> null
+    }
+
+  # aws_security_group.elb-sg will be destroyed
+  - resource "aws_security_group" "elb-sg" {
+      - arn                    = "arn:aws:ec2:eu-west-2:087693861308:security-group/sg-03aa23b5e90265de0" -> null
+      - description            = "Managed by Terraform" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = ""
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-03aa23b5e90265de0" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = ""
+              - from_port        = 80
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 80
+            },
+        ] -> null
+      - name                   = "ELB-SG" -> null
+      - owner_id               = "087693861308" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Name" = "ELB-SG"
+        } -> null
+      - tags_all               = {
+          - "Name" = "ELB-SG"
+        } -> null
+      - vpc_id                 = "vpc-07f6c8b48e0646592" -> null
+    }
+
+  # aws_security_group.rds-sg will be destroyed
+  - resource "aws_security_group" "rds-sg" {
+      - arn                    = "arn:aws:ec2:eu-west-2:087693861308:security-group/sg-07a616f9d4310f529" -> null
+      - description            = "Managed by Terraform" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = ""
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-07a616f9d4310f529" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = []
+              - description      = ""
+              - from_port        = 3306
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = [
+                  - "sg-057e3d1886898a0c2",
+                ]
+              - self             = false
+              - to_port          = 3306
+            },
+        ] -> null
+      - name                   = "RDS-SG" -> null
+      - owner_id               = "087693861308" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Name" = "RDS-SG"
+        } -> null
+      - tags_all               = {
+          - "Name" = "RDS-SG"
+        } -> null
+      - vpc_id                 = "vpc-07f6c8b48e0646592" -> null
+    }
+
+  # aws_security_group.web-sg will be destroyed
+  - resource "aws_security_group" "web-sg" {
+      - arn                    = "arn:aws:ec2:eu-west-2:087693861308:security-group/sg-057e3d1886898a0c2" -> null
+      - description            = "Managed by Terraform" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = ""
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-057e3d1886898a0c2" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = []
+              - description      = ""
+              - from_port        = 80
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = [
+                  - "sg-03aa23b5e90265de0",
+                ]
+              - self             = false
+              - to_port          = 80
+            },
+        ] -> null
+      - name                   = "WP-SG" -> null
+      - owner_id               = "087693861308" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Name" = "WP-SG"
+        } -> null
+      - tags_all               = {
+          - "Name" = "WP-SG"
+        } -> null
+      - vpc_id                 = "vpc-07f6c8b48e0646592" -> null
+    }
+
+  # aws_subnet.aws_s23_subnet_az[0] will be destroyed
+  - resource "aws_subnet" "aws_s23_subnet_az" {
+      - arn                             = "arn:aws:ec2:eu-west-2:087693861308:subnet/subnet-07874373f41d4fcd4" -> null
+      - assign_ipv6_address_on_creation = false -> null
+      - availability_zone               = "eu-west-2a" -> null
+      - availability_zone_id            = "euw2-az2" -> null
+      - cidr_block                      = "10.0.1.0/24" -> null
+      - id                              = "subnet-07874373f41d4fcd4" -> null
+      - map_customer_owned_ip_on_launch = false -> null
+      - map_public_ip_on_launch         = true -> null
+      - owner_id                        = "087693861308" -> null
+      - tags                            = {
+          - "Name" = "subnet_az_eu-west-2a"
+        } -> null
+      - tags_all                        = {
+          - "Name" = "subnet_az_eu-west-2a"
+        } -> null
+      - vpc_id                          = "vpc-07f6c8b48e0646592" -> null
+    }
+
+  # aws_subnet.aws_s23_subnet_az[1] will be destroyed
+  - resource "aws_subnet" "aws_s23_subnet_az" {
+      - arn                             = "arn:aws:ec2:eu-west-2:087693861308:subnet/subnet-084fb45d2ccdd5c6a" -> null
+      - assign_ipv6_address_on_creation = false -> null
+      - availability_zone               = "eu-west-2b" -> null
+      - availability_zone_id            = "euw2-az3" -> null
+      - cidr_block                      = "10.0.2.0/24" -> null
+      - id                              = "subnet-084fb45d2ccdd5c6a" -> null
+      - map_customer_owned_ip_on_launch = false -> null
+      - map_public_ip_on_launch         = true -> null
+      - owner_id                        = "087693861308" -> null
+      - tags                            = {
+          - "Name" = "subnet_az_eu-west-2b"
+        } -> null
+      - tags_all                        = {
+          - "Name" = "subnet_az_eu-west-2b"
+        } -> null
+      - vpc_id                          = "vpc-07f6c8b48e0646592" -> null
+    }
+
+  # aws_vpc.aws_s23_vpc will be destroyed
+  - resource "aws_vpc" "aws_s23_vpc" {
+      - arn                              = "arn:aws:ec2:eu-west-2:087693861308:vpc/vpc-07f6c8b48e0646592" -> null
+      - assign_generated_ipv6_cidr_block = false -> null
+      - cidr_block                       = "10.0.0.0/16" -> null
+      - default_network_acl_id           = "acl-040ec5be0d5712a35" -> null
+      - default_route_table_id           = "rtb-03cc7e8a0aaeaf954" -> null
+      - default_security_group_id        = "sg-0ec9de080d1b56f80" -> null
+      - dhcp_options_id                  = "dopt-0357b510f4c9fbd5e" -> null
+      - enable_dns_hostnames             = true -> null
+      - enable_dns_support               = true -> null
+      - id                               = "vpc-07f6c8b48e0646592" -> null
+      - instance_tenancy                 = "default" -> null
+      - main_route_table_id              = "rtb-03cc7e8a0aaeaf954" -> null
+      - owner_id                         = "087693861308" -> null
+      - tags                             = {
+          - "Name" = "aws_s23_vpc"
+        } -> null
+      - tags_all                         = {
+          - "Name" = "aws_s23_vpc"
+        } -> null
+    }
+
+  # random_string.mysql_password will be destroyed
+  - resource "random_string" "mysql_password" {
+      - id          = "ZCSV0uH5aP" -> null
+      - length      = 10 -> null
+      - lower       = true -> null
+      - min_lower   = 0 -> null
+      - min_numeric = 0 -> null
+      - min_special = 0 -> null
+      - min_upper   = 0 -> null
+      - number      = true -> null
+      - result      = "ZCSV0uH5aP" -> null
+      - special     = false -> null
+      - upper       = true -> null
+    }
+
+  # random_string.wp_password will be destroyed
+  - resource "random_string" "wp_password" {
+      - id          = "RSBVbFrBh0" -> null
+      - length      = 10 -> null
+      - lower       = true -> null
+      - min_lower   = 0 -> null
+      - min_numeric = 0 -> null
+      - min_special = 0 -> null
+      - min_upper   = 0 -> null
+      - number      = true -> null
+      - result      = "RSBVbFrBh0" -> null
+      - special     = false -> null
+      - upper       = true -> null
+    }
+
+Plan: 0 to add, 0 to change, 36 to destroy.
+
+Changes to Outputs:
+  - account_id              = "087693861308" -> null
+  - db_admin-profile-creds  = "semen : wcBMA/+acaZr61BLAQgAda0VASpXP1gSBnHdTjuuL4jGUDPf7CgI/NjuWIHz+dXZw7r4kfK7/A1138yg3sq9xKkrcGl3ErA2qQgD2WF16shyamyGwVx6/EA6vtaLSTH/6jTb05jhnb8HBcHQWveNP2W954NcTZhULjtifmpR/yY5GG8QepYTS0IsnQ3Yl3AwlxZxSxkhfPGqh6nEwSfPAnqremWj0/s5xc8TLQhjXgmKf2lZhhgW+ZuMyvRPaG26bCqdJHprULrYchCcjcYRc+fZPI72UO2UDDjm3uGY9jgKxtGKV3/xfSJchSDj0U3EGe4o47x+cHbHuulrgPyrbEIm9uBu/7N1sKuc0CyIPNLgAeRG8w6QlwXNgs29q6Ww1cVG4V3t4MXgEuEkteAq4vxngxDgSeTyq+x3hAz8eMRalWkLLy4I4C/il/tjMOBN5OH4T2BxTUegPC+go1pmtVjid9Aew+F6+wA=" -> null
+  - ec2_admin-profile-creds = "fedor : wcBMA/+acaZr61BLAQgAr3xRPDvCKNJV8vMJAUlP3hfR2n7Dh/34S91TPL+Yv5jwx7MMKAoOYhMu3TDPnJyDn3snzdyV+A0WYqPNZvM0k6LYS6chm4K9MxynIeLk4ktiQcVdsvHKiDTco+PaU0dWkkH+21tpdg2dVjmVmWhlKTWpZRNmLMIOvV02wFBJi8lepdFgd49AK+1hVbOfLi2flMXY7ffh5kTpTkffyJ4iVrUN9NkXoTZT+o7cqpnbYDceGZh5mg0cjj++lOexCSqLo3nWuD9Atks4HNQA/CvyNYLPBkdeihNfgjrj9Jutfav8zUdupmbZ3nVOIABYnjqZg2vwdk2JxHkYsoR2eFH+9dLgAeQLuql+DCfo9IObE1dbb5MX4dzk4OTgnOGbCOBm4ouFudPgUOS7f49l059lmc4toyWlhEsu4H3i0lDmPuAu5BL+6hbsHyzgDbG7Qlo6DeniXXYSx+EM9gA=" -> null
+  - efs_dns_name            = "fs-00a3ec341f88ca116.efs.eu-west-2.amazonaws.com" -> null
+  - rds_address             = "mysqldb.cescrqybicl5.eu-west-2.rds.amazonaws.com" -> null
+  - rds_creds               = "dbadmin : ZCSV0uH5aP" -> null
+  - wp_creds                = "wpadmin : RSBVbFrBh0" -> null
+  - wp_lb_url               = "wp-alb-630828199.eu-west-2.elb.amazonaws.com" -> null
+aws_autoscaling_attachment.asg_attachment_elb: Destroying... [id=Wordpress-ASG-20220102151103929500000001]
+aws_iam_user_login_profile.db_profile: Destroying... [id=semen]
+aws_efs_mount_target.efs_mount[1]: Destroying... [id=fsmt-01974f0b6b2c176d4]
+aws_efs_mount_target.efs_mount[0]: Destroying... [id=fsmt-02f92918cb572cf53]
+aws_main_route_table_association.aws_s23-rt-association: Destroying... [id=rtbassoc-06a42e52249471be1]
+aws_iam_policy_attachment.rds_rp-attach: Destroying... [id=rds_rp-attach]
+aws_iam_group_membership.s23_team: Destroying... [id=s23-team]
+aws_iam_user_login_profile.ec2_profile: Destroying... [id=fedor]
+aws_efs_access_point.efs_access_point: Destroying... [id=fsap-0a9fb739b372f4ac7]
+aws_lb_listener.web_ls: Destroying... [id=arn:aws:elasticloadbalancing:eu-west-2:087693861308:listener/app/wp-alb/6a65010af386862c/c140c2dd15151cd5]
+aws_lb_listener.web_ls: Destruction complete after 0s
+aws_iam_policy_attachment.ec2_rp-attach: Destroying... [id=ec2_rp-attach]
+aws_autoscaling_attachment.asg_attachment_elb: Destruction complete after 0s
+aws_autoscaling_group.web_asg: Destroying... [id=Wordpress-ASG]
+aws_iam_user_login_profile.ec2_profile: Destruction complete after 0s
+aws_iam_user_login_profile.db_profile: Destruction complete after 0s
+aws_main_route_table_association.aws_s23-rt-association: Destruction complete after 0s
+aws_route_table.aws_s23-rt: Destroying... [id=rtb-03cc7e8a0aaeaf954]
+aws_iam_group_membership.s23_team: Destruction complete after 1s
+aws_iam_group.s23_group: Destroying... [id=s23_users]
+aws_iam_policy_attachment.rds_rp-attach: Destruction complete after 1s
+aws_iam_policy.rds_policy: Destroying... [id=arn:aws:iam::087693861308:policy/rds_policy]
+aws_iam_role.rds_role: Destroying... [id=rds_role]
+aws_iam_policy_attachment.ec2_rp-attach: Destruction complete after 1s
+aws_iam_policy.ec2_policy: Destroying... [id=arn:aws:iam::087693861308:policy/ec2_policy]
+aws_iam_role.ec2_role: Destroying... [id=ec2_role]
+aws_route_table.aws_s23-rt: Destruction complete after 1s
+aws_internet_gateway.aws_s23-gw: Destroying... [id=igw-00ca9a6c14493bc22]
+aws_efs_access_point.efs_access_point: Destruction complete after 1s
+aws_iam_group.s23_group: Destruction complete after 0s
+aws_iam_policy.rds_policy: Destruction complete after 1s
+aws_iam_policy.ec2_policy: Destruction complete after 1s
+aws_iam_user.ec2_admin: Destroying... [id=fedor]
+aws_iam_role.rds_role: Destruction complete after 2s
+aws_iam_user.ec2_admin: Destruction complete after 1s
+aws_iam_role.ec2_role: Destruction complete after 2s
+aws_efs_mount_target.efs_mount[0]: Still destroying... [id=fsmt-02f92918cb572cf53, 10s elapsed]
+aws_efs_mount_target.efs_mount[1]: Still destroying... [id=fsmt-01974f0b6b2c176d4, 10s elapsed]
+aws_autoscaling_group.web_asg: Still destroying... [id=Wordpress-ASG, 10s elapsed]
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 10s elapsed]
+aws_efs_mount_target.efs_mount[1]: Still destroying... [id=fsmt-01974f0b6b2c176d4, 20s elapsed]
+aws_efs_mount_target.efs_mount[0]: Still destroying... [id=fsmt-02f92918cb572cf53, 20s elapsed]
+aws_autoscaling_group.web_asg: Still destroying... [id=Wordpress-ASG, 20s elapsed]
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 20s elapsed]
+aws_efs_mount_target.efs_mount[0]: Destruction complete after 22s
+aws_efs_mount_target.efs_mount[1]: Destruction complete after 22s
+aws_security_group.efs-sg: Destroying... [id=sg-0b7acf614dcb1252e]
+aws_security_group.efs-sg: Destruction complete after 1s
+aws_autoscaling_group.web_asg: Still destroying... [id=Wordpress-ASG, 30s elapsed]
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 30s elapsed]
+aws_autoscaling_group.web_asg: Still destroying... [id=Wordpress-ASG, 40s elapsed]
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 40s elapsed]
+aws_autoscaling_group.web_asg: Still destroying... [id=Wordpress-ASG, 50s elapsed]
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 50s elapsed]
+aws_autoscaling_group.web_asg: Still destroying... [id=Wordpress-ASG, 1m0s elapsed]
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 1m0s elapsed]
+aws_autoscaling_group.web_asg: Still destroying... [id=Wordpress-ASG, 1m10s elapsed]
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 1m10s elapsed]
+aws_autoscaling_group.web_asg: Still destroying... [id=Wordpress-ASG, 1m20s elapsed]
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 1m20s elapsed]
+aws_autoscaling_group.web_asg: Still destroying... [id=Wordpress-ASG, 1m30s elapsed]
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 1m30s elapsed]
+aws_autoscaling_group.web_asg: Still destroying... [id=Wordpress-ASG, 1m40s elapsed]
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 1m40s elapsed]
+aws_autoscaling_group.web_asg: Still destroying... [id=Wordpress-ASG, 1m50s elapsed]
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 1m50s elapsed]
+aws_autoscaling_group.web_asg: Still destroying... [id=Wordpress-ASG, 2m0s elapsed]
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 2m0s elapsed]
+aws_autoscaling_group.web_asg: Still destroying... [id=Wordpress-ASG, 2m10s elapsed]
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 2m10s elapsed]
+aws_autoscaling_group.web_asg: Still destroying... [id=Wordpress-ASG, 2m20s elapsed]
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 2m20s elapsed]
+aws_autoscaling_group.web_asg: Destruction complete after 2m29s
+aws_launch_configuration.web_lc: Destroying... [id=LC-WP]
+aws_lb_target_group.web_tg: Destroying... [id=arn:aws:elasticloadbalancing:eu-west-2:087693861308:targetgroup/web-tg/76705ac37fb3e8ed]
+aws_lb_target_group.web_tg: Destruction complete after 0s
+aws_launch_configuration.web_lc: Destruction complete after 0s
+random_string.wp_password: Destroying... [id=RSBVbFrBh0]
+aws_lb.web_alb: Destroying... [id=arn:aws:elasticloadbalancing:eu-west-2:087693861308:loadbalancer/app/wp-alb/6a65010af386862c]
+aws_db_instance.aws_s23-mysql: Destroying... [id=mysqldb]
+aws_iam_user.db_admin: Destroying... [id=semen]
+aws_efs_file_system.efs: Destroying... [id=fs-00a3ec341f88ca116]
+random_string.wp_password: Destruction complete after 0s
+aws_iam_user.db_admin: Destruction complete after 1s
+aws_lb.web_alb: Destruction complete after 2s
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 2m30s elapsed]
+aws_efs_file_system.efs: Destruction complete after 3s
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 10s elapsed]
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 2m40s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 20s elapsed]
+aws_internet_gateway.aws_s23-gw: Still destroying... [id=igw-00ca9a6c14493bc22, 2m50s elapsed]
+aws_internet_gateway.aws_s23-gw: Destruction complete after 2m53s
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 30s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 40s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 50s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 1m0s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 1m10s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 1m20s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 1m30s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 1m40s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 1m50s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 2m0s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 2m10s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 2m20s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 2m30s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 2m40s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 2m50s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 3m0s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 3m10s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 3m20s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 3m30s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 3m40s elapsed]
+aws_db_instance.aws_s23-mysql: Still destroying... [id=mysqldb, 3m50s elapsed]
+aws_db_instance.aws_s23-mysql: Destruction complete after 3m58s
+aws_db_subnet_group.rds-subnet: Destroying... [id=rds-subnet]
+random_string.mysql_password: Destroying... [id=ZCSV0uH5aP]
+aws_security_group.rds-sg: Destroying... [id=sg-07a616f9d4310f529]
+random_string.mysql_password: Destruction complete after 0s
+aws_db_subnet_group.rds-subnet: Destruction complete after 0s
+aws_subnet.aws_s23_subnet_az[0]: Destroying... [id=subnet-07874373f41d4fcd4]
+aws_subnet.aws_s23_subnet_az[1]: Destroying... [id=subnet-084fb45d2ccdd5c6a]
+aws_security_group.rds-sg: Destruction complete after 1s
+aws_security_group.web-sg: Destroying... [id=sg-057e3d1886898a0c2]
+aws_subnet.aws_s23_subnet_az[0]: Destruction complete after 1s
+aws_subnet.aws_s23_subnet_az[1]: Destruction complete after 1s
+aws_security_group.web-sg: Destruction complete after 0s
+aws_security_group.elb-sg: Destroying... [id=sg-03aa23b5e90265de0]
+aws_security_group.elb-sg: Destruction complete after 1s
+aws_vpc.aws_s23_vpc: Destroying... [id=vpc-07f6c8b48e0646592]
+aws_vpc.aws_s23_vpc: Destruction complete after 1s
+
+Destroy complete! Resources: 36 destroyed.
